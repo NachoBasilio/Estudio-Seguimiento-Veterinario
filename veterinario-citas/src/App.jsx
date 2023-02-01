@@ -1,8 +1,12 @@
+import Header from "./components/Header"
+import Formulario from "./components/Formulario"
 
 function App() {
+  const real = false
   return (
     <div className="App">
-      <h1>Hola a todos</h1>
+      <Header/>
+      <h2>{real ? "Real no fake" : "No real, totalmente fake"}</h2>
     </div>
   )
 }
