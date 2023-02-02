@@ -1,5 +1,5 @@
 export default function Formulario() {
   return (
-    <div>Formulario</div>
+    <h2>Formulario</h2>
   )
 }
