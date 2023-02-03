@@ -5,7 +5,7 @@ import ListadoPacientes from "./components/ListadoPacientes"
 function App() {
   const real = false
   return (
-    <div className="App">
+    <div className="container mx-auto mt-20"> 
       <Header/>
       <Formulario/>
       <ListadoPacientes/>
