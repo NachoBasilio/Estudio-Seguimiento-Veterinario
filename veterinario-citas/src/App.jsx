@@ -3,13 +3,13 @@ import Formulario from "./components/Formulario"
 import ListadoPacientes from "./components/ListadoPacientes"
 
 function App() {
-  const real = false
   return (
     <div className="container mx-auto mt-20"> 
       <Header/>
-      <Formulario/>
-      <ListadoPacientes/>
-      <h2>{real ? "Real no fake" : "No real, totalmente fake"}</h2>
+      <div className="mt-12 md:flex ">
+        <Formulario/>
+        <ListadoPacientes/>
+      </div>
     </div>
   )
 }
