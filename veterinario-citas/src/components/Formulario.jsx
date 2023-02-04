@@ -20,6 +20,13 @@ export default function Formulario({setPacientes,pacientes}) {
     }
     setError(false)
     setPacientes([...pacientes, cliente])
+    setCliente({
+      nombre:"",
+      propietario:"",
+      fecha:"",
+      email:"",
+      sintomas:""
+    })
   }
 
   return (
@@ -48,6 +55,7 @@ export default function Formulario({setPacientes,pacientes}) {
           className="border-2 w-full p-2 mt-2 placeholder-grey-400 rounded-md" 
           type="text" 
           placeholder="Nombre de la mascota" 
+          value={cliente.nombre}
           onChange={(e)=>{
             setCliente({...cliente, nombre:e.target.value})
           }}
@@ -61,6 +69,7 @@ export default function Formulario({setPacientes,pacientes}) {
           className="border-2 w-full p-2 mt-2 placeholder-grey-400 rounded-md" 
           type="text" 
           placeholder="Nombre de la mascota" 
+          value={cliente.propietario}
           onChange={(e)=>{
             setCliente({...cliente, propietario:e.target.value})
           }}
@@ -74,6 +83,7 @@ export default function Formulario({setPacientes,pacientes}) {
           className="border-2 w-full p-2 mt-2 placeholder-grey-400 rounded-md" 
           type="text" 
           placeholder="Email del propietario" 
+          value={cliente.email}
           onChange={(e)=>{
             setCliente({...cliente, email:e.target.value})
           }}
@@ -86,6 +96,7 @@ export default function Formulario({setPacientes,pacientes}) {
           id="Alta" 
           className="border-2 w-full p-2 mt-2 placeholder-grey-400 rounded-md" 
           type="date" 
+          value={cliente.fecha}
           onChange={(e)=>{
             setCliente({...cliente, fecha:e.target.value})
           }}
@@ -99,6 +110,7 @@ export default function Formulario({setPacientes,pacientes}) {
           id="Sintomas" 
           className="border-2 w-full p-2 mt-2" 
           placeholder="Sintomas"
+          value={cliente.sintomas}
           onChange={(e)=>{
             setCliente({...cliente, sintomas:e.target.value})
           }}
