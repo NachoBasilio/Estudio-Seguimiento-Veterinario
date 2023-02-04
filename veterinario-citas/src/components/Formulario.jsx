@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react' 
 
-export default function Formulario() {
+export default function Formulario({setPacientes,pacientes}) {
   const [cliente, setCliente] = useState({
     nombre:"",
     propietario:"",
@@ -18,8 +18,8 @@ export default function Formulario() {
       setError(true)
       return
     }
-      setError(false)
-  
+    setError(false)
+    setPacientes([...pacientes, cliente])
   }
 
   return (
