@@ -8,8 +8,11 @@ export default function ListadoPacientes({pacientes}) {
         Administra tus {''}
         <span className="text-indigo-600 font-bold">Pacientes y citas</span>
       </p>
-      {pacientes.map((paciente)=>{
-        return <Paciente pacientes={paciente} />
+      {pacientes.map((paciente, index)=>{
+        return <Paciente 
+        key={index}
+        pacientes={paciente} 
+        />
       })}
 
     </div>
