@@ -1,14 +1,26 @@
 import {useState, useEffect} from 'react' 
 import Error from './Error'
 
-export default function Formulario({setPacientes,pacientes}) {
+export default function Formulario({setPacientes,pacientes,paciente}) {
   const [cliente, setCliente] = useState({
     nombre:"",
     propietario:"",
     fecha:"",
     email:"",
-    sintomas:""
+    sintomas:"",
+    id:generarId()
   })
+
+  useEffect(()=>{
+
+  },[paciente])
+  
+
+
+  function generarId(){
+    return Math.random().toString(23).substring(2)+Date.now().toString(32)
+  }//Lo hago asi por el hoisting
+
   const[error, setError] = useState(false)
 
   const handleSubmit = (e)=>{
@@ -26,7 +38,8 @@ export default function Formulario({setPacientes,pacientes}) {
       propietario:"",
       fecha:"",
       email:"",
-      sintomas:""
+      sintomas:"",
+      id:generarId()
     })
   }
 
