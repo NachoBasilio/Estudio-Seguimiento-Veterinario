@@ -10,9 +10,20 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
     sintomas:"",
     id:generarId()
   })
+  const [edicion, setEdicion] = useState(false)
 
   useEffect(()=>{
-
+    if(Object.keys(paciente).length > 0){
+      setEdicion(true)
+      setCliente({
+        nombre:paciente.nombre,
+        propietario:paciente.propietario,
+        fecha:paciente.fecha,
+        email:paciente.email,
+        sintomas:paciente.sintomas,
+        id:paciente.id
+      })
+    }
   },[paciente])
   
 
@@ -31,8 +42,24 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
       setError(true)
       return
     }
+
+    if(edicion){
+      const index = pacientes.findIndex((paciente)=>{
+        return paciente.id == cliente.id
+      })
+      console.log(pacientes)
+      pacientes[index] = cliente
+      console.log(pacientes)
+      setPacientes([...pacientes])
+      setEdicion(false)
+    }else{
+      setPacientes([...pacientes, cliente])
+    }
+
+
     setError(false)
-    setPacientes([...pacientes, cliente])
+
+
     setCliente({
       nombre:"",
       propietario:"",
@@ -41,6 +68,7 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
       sintomas:"",
       id:generarId()
     })
+    setEdicion(false)
   }
 
   return (
@@ -129,7 +157,7 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
         <input 
         type="submit" 
         className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all" 
-        value="Agregar Paciente" />
+        value={edicion ? "Editando paciente" : "Agregar paciente"} />
       </form>
     </div>
   )
