@@ -44,9 +44,6 @@ export default function Formulario({setPacientes,pacientes,paciente,setPaciente}
     }
 
     if(edicion){
-      const index = pacientes.findIndex((paciente)=>{
-        return paciente.id == cliente.id
-      })
       const pacientesActualizados = pacientes.map(pacientesState => pacientesState.id === cliente.id ? cliente : pacientesState)
       setPacientes([...pacientesActualizados])
       setPaciente({})
