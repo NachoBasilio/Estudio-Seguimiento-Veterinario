@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react' 
 import Error from './Error'
 
-export default function Formulario({setPacientes,pacientes,paciente}) {
+export default function Formulario({setPacientes,pacientes,paciente,setPaciente}) {
   const [cliente, setCliente] = useState({
     nombre:"",
     propietario:"",
@@ -11,6 +11,7 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
     id:generarId()
   })
   const [edicion, setEdicion] = useState(false)
+  const[error, setError] = useState(false)
 
   useEffect(()=>{
     if(Object.keys(paciente).length > 0){
@@ -32,8 +33,7 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
     return Math.random().toString(23).substring(2)+Date.now().toString(32)
   }//Lo hago asi por el hoisting
 
-  const[error, setError] = useState(false)
-
+ 
   const handleSubmit = (e)=>{
     e.preventDefault()
 
@@ -47,19 +47,13 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
       const index = pacientes.findIndex((paciente)=>{
         return paciente.id == cliente.id
       })
-      console.log(pacientes)
-      pacientes[index] = cliente
-      console.log(pacientes)
-      setPacientes([...pacientes])
+      const pacientesActualizados = pacientes.map(pacientesState => pacientesState.id === cliente.id ? cliente : pacientesState)
+      setPacientes([...pacientesActualizados])
+      setPaciente({})
       setEdicion(false)
     }else{
       setPacientes([...pacientes, cliente])
     }
-
-
-    setError(false)
-
-
     setCliente({
       nombre:"",
       propietario:"",
@@ -68,7 +62,7 @@ export default function Formulario({setPacientes,pacientes,paciente}) {
       sintomas:"",
       id:generarId()
     })
-    setEdicion(false)
+    setError(false)
   }
 
   return (
